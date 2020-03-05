@@ -456,15 +456,15 @@
         <div class="row">
           <div class="column sm6 md6">
             <button
-              type="submit"
+              type="button"
               class="btnPrint"
               id="printme"
               style="padding:20px; background-color:#eee"
+              v-on:click="prnt"
             >PRINT</button>
           </div>
           <div class="column sm6 md6">
             <button
-              type="submit"
               class="btnPrint"
               id="email"
               style="padding:20px; background-color:#eee"
@@ -489,7 +489,7 @@ export default {
       empty: true,
       dirty: false,
       frm: {
-        formtype: '',
+        formtype: 'Invoice',
         firstName: '',
         lastName: '',
         email: '',
@@ -559,6 +559,8 @@ export default {
   methods: {
     save(e) {
       e.preventDefault();
+      this.frm.hst = this.hstv;
+      this.frm.totalCost = this.total;
       this.frm.dirty = !this.$v.frm.$anyDirty;
       this.frm.errors = this.$v.frm.$anyError;
       console.log(this.frm.errors);
@@ -573,6 +575,10 @@ export default {
           alert("Your Message was sent");
          });
       }
+    },
+    prnt(e){
+      e.preventDefault();
+      window.print();
     },
   },
   computed: {

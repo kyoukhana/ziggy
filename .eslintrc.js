@@ -13,7 +13,8 @@ module.exports = {
     'max-len': 'off', // disables line length check
     'indent': 'off',
     'no-console': 'off',
-
+    'skipBlankLines': true,
+    'ignoreComments': true,
   },
   parserOptions: {
     parser: 'babel-eslint',
